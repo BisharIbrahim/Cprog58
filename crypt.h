@@ -4,7 +4,7 @@
 #include <string.h>
 
 
-void encrypt(char *name){
+int encrypt(char *name){
     FILE *fpts, *fptt;
     char ch;
 
@@ -12,6 +12,7 @@ void encrypt(char *name){
     if(fpts==NULL)
     {
         printf(" File does not exists or error in opening..!!");
+        return 0;
         exit(1);
     }
     fptt=fopen("temp.txt", "w");
@@ -19,7 +20,9 @@ void encrypt(char *name){
     {
         printf(" Error in creation of file temp.txt ..!!");
         fclose(fpts);
+        return 0;
         exit(2);
+
     }
     while(1)
     {
@@ -40,6 +43,7 @@ void encrypt(char *name){
     if(fpts==NULL)
     {
         printf(" File does not exists or error in opening..!!");
+        return 0;
         exit(3);
     }
     fptt=fopen("temp.txt", "r");
@@ -47,6 +51,7 @@ void encrypt(char *name){
     {
         printf(" File does not exists or error in opening..!!");
         fclose(fpts);
+        return 0;
         exit(4);
     }
     while(1)
@@ -64,6 +69,7 @@ void encrypt(char *name){
     printf(" File %s successfully encrypted ..!!\n\n", name);
     fclose(fpts);
     fclose(fptt);
+    return 1;
     
 }
 
